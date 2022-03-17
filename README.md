@@ -1,2 +1,2 @@
-# pokemon
-<a href='https://pokemon-info.vercel.app/' target='_blank'>View Project </a>
+# Weather App built with React
+<a href='http://react-weather-app-six-omega.vercel.app/' target='_blank'>View Project </a>
