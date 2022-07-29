@@ -28,11 +28,11 @@ function App() {
         <h2 className="center">Weather App</h2>
         <span className="center">
           <a
-            href="https://mk-portfolio.vercel.app/"
+            href="https://mako.vercel.app"
             target="_blank"
             rel="noopener noreferrer"
           >
-            {"  "}Pythagoras-dev
+            {"  "}Mako
           </a>
         </span>
       </header>
