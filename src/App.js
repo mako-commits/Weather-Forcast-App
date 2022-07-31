@@ -1,8 +1,14 @@
 import React, { useState } from "react";
-import Search from "./components/Search";
-import CurrentWeather from "./components/CurrentWeather";
+// import Search from "./components/Search";
+// import CurrentWeather from "./components/CurrentWeather/CurrentWeather";
 import { useEffect } from "react";
 import axios from "axios";
+import Spinner from "./components/Spinner";
+// import InfoDisplay from "./components/UI/InfoDisplay";
+import Container from "./components/UI/Container";
+// import WeatherForcast from "./components/WeatherForecast/WeatherForecast";
+import LeftPane from "./components/LeftPane";
+import RightPane from "./components/RightPane";
 
 //! hide this
 const api = {
@@ -16,6 +22,12 @@ function App() {
   const [currentWeather, setCurrentWeather] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [chart, setChart] = useState({
+    chartLabels: ["Now"],
+    chartData: [],
+    chartMin: "",
+    chartMax: "",
+  });
 
   //fetch weather info
   const fetchWeatherData = async (cityName) => {
@@ -59,19 +71,16 @@ function App() {
   const setCityNameHandler = (cityname) => {
     setCityName(cityname);
   };
-  // const forecastData =
-  let content = <p>No weather available</p>;
 
-  if (error) {
-    content = <p>Error: {error}</p>;
-  }
-  if (isLoading) {
-    content = <p>Loading</p>;
-  }
+  // let content = <p>No weather available</p>;
 
-  if (typeof currentWeather.main != "undefined") {
-    content = <CurrentWeather weather={currentWeather} />;
-  }
+  // if (error) {
+  //   content = <p>Error</p>;
+  // }
+  // if (isLoading) {
+  //   content = <Spinner />;
+  // }
+
   return (
     <>
       <header>
@@ -86,14 +95,17 @@ function App() {
           </a>
         </span>
       </header>
-      <main>
-        <div className="section1">
-          <div className="search">
-            <Search onSubmitHandler={setCityNameHandler} />
-          </div>
-          <section className="weatherResults">{content}</section>
+      <Container>
+        <div>
+          <LeftPane
+            onSubmitHandler={setCityNameHandler}
+            weather={currentWeather}
+            loading={isLoading}
+            error={error}
+          />
+          <RightPane forecast={weatherForecast} />
         </div>
-      </main>
+      </Container>
     </>
   );
 }

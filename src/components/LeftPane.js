@@ -1,10 +1,13 @@
 import React, { Fragment } from "react";
-import CurrentWeather from "./CurrentWeather";
-// import Search from "./Search";
+import CurrentWeather from "./CurrentWeather/CurrentWeather";
+import Search from "./Search";
+
 const LeftPane = (props) => {
+  const { weather, onSubmitHandler, loading, error } = props;
   return (
     <Fragment>
-      <CurrentWeather />
+      <Search onSubmitHandler={onSubmitHandler} />
+      <CurrentWeather weather={weather} loading={loading} error={error} />
     </Fragment>
   );
 };
