@@ -1,6 +1,6 @@
 import React from "react";
 
-const WeatherGrid = ({ weather }) => {
+const CurrentWeather = ({ weather }) => {
   const dateBuilder = (d) => {
     let months = [
       "January",
@@ -72,13 +72,6 @@ const WeatherGrid = ({ weather }) => {
       </div>
     </section>
   );
-  //   return isLoaded ? (
-  //     <h1>I'm loading</h1>
-  //   ) : (
-  //     <section className="weather results">
-  //       <h2>{weather.name}</h2>
-  //     </section>
-  //   );
 };
 
-export default WeatherGrid;
+export default CurrentWeather;
